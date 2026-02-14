@@ -1,0 +1,79 @@
+{
+  "kind": "spec_vs_diff_report",
+  "version": "1.0",
+  "generatedAt": "2026-02-14T13:40:15.028Z",
+  "summary": "The diff adds an Add Vehicle page and routing/nav links, plus a backend addVehicle method with auto-increment IDs. However, the backend method signature/return type does not match REQ-7 (returns Nat instead of Vehicle), and some frontend AC items (success UX, post-create navigation, query invalidation) cannot be fully verified due to truncation. The diff also introduces unrequested backend migration and ID-type refactors.",
+  "missing_requirements": [
+    {
+      "id": "REQ-7",
+      "requirement": "Backend create/update method returns the created Vehicle (including its assigned unique id), not just an id.",
+      "reason": "backend/main.mo implements addVehicle(...) : async Nat and returns only the generated id, whereas REQ-7 requires returning the created Vehicle object (including id).",
+      "evidence": [
+        "backend/main.mo"
+      ]
+    },
+    {
+      "id": "REQ-8",
+      "requirement": "After successful creation, the user can navigate to the created vehicle’s detail page or see it appear in the relevant category listing after refresh/query invalidation.",
+      "reason": "AddVehiclePage.tsx is truncated before the post-submit success handling; the diff summary does not provide direct evidence of navigation to the created vehicle detail page (e.g., navigate('/vehicle/$id', ...)) or showing it in-category beyond claims in a separate summary file.",
+      "evidence": [
+        "frontend/src/pages/AddVehiclePage.tsx (truncated)",
+        "frontend-file-summaries.txt"
+      ]
+    },
+    {
+      "id": "REQ-8",
+      "requirement": "Submitting the form successfully creates a vehicle in the backend and shows a clear success message in English.",
+      "reason": "The form submission logic is truncated at the actor.addVehicle(...) call site; the diff does not show the success toast/message content or that it is displayed on success.",
+      "evidence": [
+        "frontend/src/pages/AddVehiclePage.tsx (truncated)"
+      ]
+    },
+    {
+      "id": "REQ-9",
+      "requirement": "Seed sample vehicles button inserts at least 1 vehicle per category (Bike, Motorcycle, Car) using the same backend add/create method as the form.",
+      "reason": "The AddVehiclePage implementation is truncated and does not show the seeding handler or the specific seeded vehicles/categories; the only mention is in a high-level summary text file, which is not sufficient to verify AC details.",
+      "evidence": [
+        "frontend/src/pages/AddVehiclePage.tsx (truncated)",
+        "frontend-file-summaries.txt"
+      ]
+    },
+    {
+      "id": "REQ-10",
+      "requirement": "After a successful add/seed, React Query vehicle list queries are invalidated/refetched so Home/Category pages reflect changes.",
+      "reason": "Although useQueryClient is imported, the diff is truncated before any invalidateQueries/refetch logic is shown; the only assertion is in a summary text file.",
+      "evidence": [
+        "frontend/src/pages/AddVehiclePage.tsx (truncated)",
+        "frontend-file-summaries.txt"
+      ]
+    }
+  ],
+  "hallucinated_features": [
+    {
+      "description": "Backend migration module and refactor changing vehicle/favorites IDs from Int to Nat, with migration logic and nextId state.",
+      "reason": "The BuildRequest did not request schema migration or an ID-type refactor (Int->Nat) nor adding a migration module; it only requested an add/create method with auto-assigned unique IDs.",
+      "evidence": [
+        "backend/migration.mo",
+        "backend/main.mo"
+      ]
+    },
+    {
+      "description": "Footer ‘Connect’ social links/icons and a caffeine.ai attribution link with UTM tracking changes.",
+      "reason": "Not requested by REQ-7/8/9/10; these are unrelated UI/content additions beyond adding an Add Vehicle workflow.",
+      "evidence": [
+        "frontend/src/components/Footer.tsx"
+      ]
+    }
+  ],
+  "confidence": 0.72,
+  "changed_files": [
+    "backend/main.mo",
+    "backend/migration.mo",
+    "frontend-file-summaries.txt",
+    "frontend/src/App.tsx",
+    "frontend/src/components/Footer.tsx",
+    "frontend/src/components/Header.tsx",
+    "frontend/src/pages/AddVehiclePage.tsx",
+    "project_state.json"
+  ]
+}

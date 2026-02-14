@@ -1,0 +1,71 @@
+{
+  "kind": "implementation_plan",
+  "version": "1.0",
+  "title": "Add Vehicle catalog insertion UI (form + seeding + React Query refresh)",
+  "requirements": [
+    {
+      "id": "REQ-8",
+      "summary": "Add an Add Vehicle page with a validated form that creates a vehicle via the backend add/create method and provides success navigation to the created detail page.",
+      "acceptanceCriteria": [
+        "A new route exists for an Add Vehicle page and it renders inside the existing AppLayout.",
+        "The page includes inputs for all required vehicle fields: vehicleType (select), make, model, year, engine, power, topSpeed, acceleration, weight, price, and images (one or more image URLs).",
+        "Submitting the form successfully creates a vehicle in the backend and shows a clear success message in English.",
+        "After successful creation, the user can navigate to the created vehicle’s detail page or see it appear in the relevant category listing after refresh/query invalidation.",
+        "Validation prevents empty required fields and shows actionable error messages in English (e.g., invalid year/power/price, missing model)."
+      ],
+      "file_operations": [
+        {
+          "path": "frontend/src/pages/AddVehiclePage.tsx",
+          "operation": "create",
+          "description": "Create the Add Vehicle page UI and form logic: use useActor() to call actor.addVehicle(vehicleType, make, specs, price, images), validate required fields and numeric ranges (year/power/topSpeed/weight/price as BigInt; acceleration as number), parse image URLs into an array, show English success/error messages (use existing shadcn-ui form building blocks like Card/Button/Input/Select/Textarea as available). Verify the component's usage instructions before implementing."
+        },
+        {
+          "path": "frontend/src/App.tsx",
+          "operation": "modify",
+          "description": "Register a new route (e.g., /add-vehicle) that renders AddVehiclePage under the existing rootRoute/AppLayout so the page appears within the current layout shell."
+        },
+        {
+          "path": "frontend/src/components/Header.tsx",
+          "operation": "modify",
+          "description": "Wire navigation to the Add Vehicle route by adding an 'Add Vehicle' link to the header nav (desktop + mobile). Use existing shadcn-ui navigation patterns already present (Sheet/Button). Verify the component's usage instructions before implementing."
+        },
+        {
+          "path": "frontend/src/components/Footer.tsx",
+          "operation": "modify",
+          "description": "Add an Add Vehicle link under Quick Links so users can find the form from anywhere in the app."
+        }
+      ]
+    },
+    {
+      "id": "REQ-9",
+      "summary": "Add a Seed sample vehicles action on the Add Vehicle page to quickly insert curated starter vehicles across Bike, Motorcycle, and Car categories.",
+      "acceptanceCriteria": [
+        "The Add Vehicle page includes a button to seed sample vehicles.",
+        "Seeding adds at least 1 vehicle per category (Bike, Motorcycle, Car) using the same backend add/create method as the form.",
+        "After seeding, Home Featured and Category pages can display the newly inserted vehicles without requiring a redeploy."
+      ],
+      "file_operations": [
+        {
+          "path": "frontend/src/pages/AddVehiclePage.tsx",
+          "operation": "modify",
+          "description": "Add a 'Seed sample vehicles' button that calls actor.addVehicle multiple times to insert at least one Bike, one Motorcycle, and one Car using curated sample data, with clear English success/failure feedback and basic disabled/loading state to prevent double-submission. Use existing shadcn-ui components for button/alerts/toasts as appropriate. Verify the component's usage instructions before implementing."
+        }
+      ]
+    },
+    {
+      "id": "REQ-10",
+      "summary": "Ensure React Query vehicle lists refresh after add/seed operations so Home/Category pages reflect newly inserted vehicles promptly without editing immutable hook files.",
+      "acceptanceCriteria": [
+        "After a successful add/seed operation, queries for vehicles are invalidated/refetched so HomePage featured vehicles and CategoryPage listings can reflect changes.",
+        "No changes are made to the immutable hook files listed in the system constraints."
+      ],
+      "file_operations": [
+        {
+          "path": "frontend/src/pages/AddVehiclePage.tsx",
+          "operation": "modify",
+          "description": "After successful add/seed, use React Query's useQueryClient() to invalidate/refetch the vehicles queries used by useAllVehicles (['vehicles','all']) and useVehiclesByType (['vehicles','type', vehicleType])—e.g., invalidate all queries whose queryKey starts with ['vehicles']—so HomePage and CategoryPage reflect updates after navigation/refresh."
+        }
+      ]
+    }
+  ]
+}

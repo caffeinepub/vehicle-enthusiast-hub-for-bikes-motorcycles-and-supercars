@@ -1,0 +1,94 @@
+{
+  "kind": "build_request",
+  "title": "Add a way to insert (add) Bikes, Motorcycles, and Supercars into the catalog",
+  "priority": "normal",
+  "requirements": [
+    {
+      "id": "REQ-7",
+      "text": "Add a backend update method that allows creating a new vehicle with an automatically assigned unique ID (so users do not need to manually choose the `id` when inserting bikes, motorcycles, or supercars).",
+      "target": "backend",
+      "source": {
+        "messageIds": [
+          "msg-4"
+        ],
+        "quotes": [
+          "how do i insert cars bike and motorcycle"
+        ]
+      },
+      "acceptanceCriteria": [
+        "Backend exposes a new update method that accepts: vehicleType, make, specs, price, images and returns the created Vehicle (including its assigned id).",
+        "The assigned id is unique within the canister’s current catalog and does not overwrite an existing vehicle.",
+        "The method supports the existing frontend vehicleType values used by routing/category pages (Bike, Motorcycle, Car)."
+      ]
+    },
+    {
+      "id": "REQ-8",
+      "text": "Create a new frontend page that provides a simple “Add Vehicle” form to insert vehicles into the catalog (Bike, Motorcycle, Car) by calling the backend create/add method.",
+      "target": "frontend",
+      "source": {
+        "messageIds": [
+          "msg-4"
+        ],
+        "quotes": [
+          "how do i insert cars bike and motorcycle"
+        ]
+      },
+      "acceptanceCriteria": [
+        "A new route exists for an Add Vehicle page and it renders inside the existing AppLayout.",
+        "The page includes inputs for all required vehicle fields: vehicleType (select), make, model, year, engine, power, topSpeed, acceleration, weight, price, and images (one or more image URLs).",
+        "Submitting the form successfully creates a vehicle in the backend and shows a clear success message in English.",
+        "After successful creation, the user can navigate to the created vehicle’s detail page or see it appear in the relevant category listing after refresh/query invalidation.",
+        "Validation prevents empty required fields and shows actionable error messages in English (e.g., invalid year/power/price, missing model)."
+      ]
+    },
+    {
+      "id": "REQ-9",
+      "text": "Add an optional “Seed sample vehicles” action in the UI that inserts a small curated starter set across Bike, Motorcycle, and Car categories for quick testing.",
+      "target": "frontend",
+      "source": {
+        "messageIds": [
+          "msg-4"
+        ],
+        "quotes": [
+          "how do i insert cars bike and motorcycle"
+        ]
+      },
+      "acceptanceCriteria": [
+        "The Add Vehicle page includes a button to seed sample vehicles.",
+        "Seeding adds at least 1 vehicle per category (Bike, Motorcycle, Car) using the same backend add/create method as the form.",
+        "After seeding, Home Featured and Category pages can display the newly inserted vehicles without requiring a redeploy."
+      ]
+    },
+    {
+      "id": "REQ-10",
+      "text": "Ensure React Query vehicle lists refresh appropriately after adding or seeding vehicles so users immediately see newly inserted items on Home/Category pages.",
+      "target": "frontend",
+      "source": {
+        "messageIds": [
+          "msg-4"
+        ],
+        "quotes": [
+          "how do i insert cars bike and motorcycle"
+        ]
+      },
+      "acceptanceCriteria": [
+        "After a successful add/seed operation, queries for vehicles are invalidated/refetched so HomePage featured vehicles and CategoryPage listings can reflect changes.",
+        "No changes are made to the immutable hook files listed in the system constraints."
+      ]
+    }
+  ],
+  "constraints": [
+    "Backend must remain a single Motoko actor; implement new logic in backend/main.mo.",
+    "Do not edit frontend immutable paths: frontend/src/hooks/useInternetIdentity.ts, frontend/src/hooks/useInternetIdentity.tsx, frontend/src/hooks/useActor.ts, frontend/src/main.tsx, frontend/src/components/ui.",
+    "Use English for any user-facing text."
+  ],
+  "nonGoals": [
+    "Implementing third-party authentication/roles beyond Internet Identity.",
+    "Adding an external database or any non-IC persistence layer.",
+    "Bulk import from CSV or external APIs."
+  ],
+  "imageRequirements": {
+    "required": [],
+    "edits": []
+  }
+}

@@ -1,0 +1,108 @@
+{
+  "schemaVersion": "1.0.0",
+  "projectStateVersion": 5,
+  "summary": "App for bike, motorcycle, and supercar enthusiasts.",
+  "architectural_notes": [],
+  "known_issues": [],
+  "isFixRequest": false,
+  "existing_features": [
+    {
+      "id": "feature-create-an-mvp-app-for-bike-motorcycle-and-supercar-enthusiasts-with-a-public-browsing-experience-that-lets-users-explore-curated-vehicles-by-category-bikes-motorcycles-supercars-and-view-a-vehicle-detail-page-with-images-and-specs-e-g-brand-model-year-engine-power-top-speed-0-60-weight",
+      "title": "Create an MVP app for bike, motorcycle, and supercar enthusiasts with a public browsing experience that lets users explore curated vehicles by category (Bikes, Motorcycles, Supercars) and view a vehicle detail page with images and specs (e.g., brand, model, year, engine/power, top speed, 0–60, weight).",
+      "reqIds": [
+        "REQ-1"
+      ],
+      "version": 1
+    },
+    {
+      "id": "feature-add-internet-identity-sign-in-to-unlock-personalization-features-authenticated-users-can-favorite-unfavorite-vehicles-and-see-a-dedicated-favorites-page-listing-their-saved-vehicles",
+      "title": "Add Internet Identity sign-in to unlock personalization features: authenticated users can favorite/unfavorite vehicles and see a dedicated Favorites page listing their saved vehicles.",
+      "reqIds": [
+        "REQ-2"
+      ],
+      "version": 1
+    },
+    {
+      "id": "feature-build-the-frontend-ia-information-architecture-and-navigation-home-category-browse-bikes-motorcycles-supercars-vehicle-detail-favorites-and-an-about-page-describing-the-app-for-enthusiasts",
+      "title": "Build the frontend IA (information architecture) and navigation: Home, Category Browse (Bikes/Motorcycles/Supercars), Vehicle Detail, Favorites, and an About page describing the app for enthusiasts.",
+      "reqIds": [
+        "REQ-4"
+      ],
+      "version": 1
+    },
+    {
+      "id": "feature-establish-a-creative-coherent-visual-theme-suitable-for-a-high-performance-vehicle-enthusiast-app-non-blue-non-purple-primary-palette-including-typography-spacing-card-styles-and-a-consistent-component-style-across-all-pages",
+      "title": "Establish a creative, coherent visual theme suitable for a high-performance vehicle enthusiast app (non-blue/non-purple primary palette), including typography, spacing, card styles, and a consistent component style across all pages.",
+      "reqIds": [
+        "REQ-5"
+      ],
+      "version": 1
+    },
+    {
+      "id": "feature-add-generated-static-brand-assets-logo-and-a-hero-banner-image-and-render-them-from-frontend-static-assets-not-served-through-the-backend",
+      "title": "Add generated static brand assets (logo and a hero/banner image) and render them from frontend static assets (not served through the backend).",
+      "reqIds": [
+        "REQ-6"
+      ],
+      "version": 1
+    },
+    {
+      "id": "feature-create-a-new-frontend-page-that-provides-a-simple-add-vehicle-form-to-insert-vehicles-into-the-catalog-bike-motorcycle-car-by-calling-the-backend-create-add-method",
+      "title": "Create a new frontend page that provides a simple “Add Vehicle” form to insert vehicles into the catalog (Bike, Motorcycle, Car) by calling the backend create/add method.",
+      "reqIds": [
+        "REQ-8"
+      ],
+      "version": 1
+    },
+    {
+      "id": "feature-add-an-optional-seed-sample-vehicles-action-in-the-ui-that-inserts-a-small-curated-starter-set-across-bike-motorcycle-and-car-categories-for-quick-testing",
+      "title": "Add an optional “Seed sample vehicles” action in the UI that inserts a small curated starter set across Bike, Motorcycle, and Car categories for quick testing.",
+      "reqIds": [
+        "REQ-9"
+      ],
+      "version": 1
+    },
+    {
+      "id": "feature-ensure-react-query-vehicle-lists-refresh-appropriately-after-adding-or-seeding-vehicles-so-users-immediately-see-newly-inserted-items-on-home-category-pages",
+      "title": "Ensure React Query vehicle lists refresh appropriately after adding or seeding vehicles so users immediately see newly inserted items on Home/Category pages.",
+      "reqIds": [
+        "REQ-10"
+      ],
+      "version": 1
+    }
+  ],
+  "new_feature_requests": [
+    {
+      "id": "AR-1",
+      "summary": "Create an app for bikes, motorcycles, and supercars lovers (enthusiast-focused app).",
+      "reqIds": [],
+      "status": "pending"
+    },
+    {
+      "id": "AR-4",
+      "summary": "Implement backend persistence in the single Motoko main actor for: (1) the vehicle catalog and (2) per-user favorites. Provide query/update methods needed by the frontend to list categories, list vehicles by category, fetch a vehicle by id, and manage favorites.",
+      "reqIds": [
+        "REQ-3"
+      ],
+      "status": "pending"
+    },
+    {
+      "id": "AR-5",
+      "summary": "Provide a way to add/insert vehicles (bikes, motorcycles, supercars) into the catalog (e.g., seed data workflow and/or admin/add-vehicle method/UI).",
+      "reqIds": [],
+      "status": "pending"
+    },
+    {
+      "id": "AR-6",
+      "summary": "Add a backend update method that allows creating a new vehicle with an automatically assigned unique ID (so users do not need to manually choose the `id` when inserting bikes, motorcycles, or supercars).",
+      "reqIds": [
+        "REQ-7"
+      ],
+      "status": "pending"
+    }
+  ],
+  "gameProjectType": "none",
+  "projectName": "Vehicle Enthusiast Hub for Bikes, Motorcycles, and Supercars",
+  "clarification_mode": "instant",
+  "clarification_rounds": 0
+}

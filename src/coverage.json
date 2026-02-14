@@ -1,0 +1,82 @@
+{
+  "kind": "coverage_report",
+  "version": "1.0",
+  "generatedAt": "2026-02-14T13:40:15.031Z",
+  "sources": {
+    "buildRequest": true,
+    "implementationPlan": true
+  },
+  "requirements": {
+    "total": 4,
+    "implemented": 3,
+    "items": [
+      {
+        "id": "REQ-10",
+        "summary": "Ensure React Query vehicle lists refresh appropriately after adding or seeding vehicles so users immediately see newly inserted items on Home/Category pages.",
+        "status": "implemented",
+        "plannedFiles": [
+          "frontend/src/pages/AddVehiclePage.tsx"
+        ],
+        "matchedFiles": [
+          "frontend/src/pages/AddVehiclePage.tsx"
+        ]
+      },
+      {
+        "id": "REQ-7",
+        "summary": "Add a backend update method that allows creating a new vehicle with an automatically assigned unique ID (so users do not need to manually choose the `id` when inserting bikes, motorcycles, or supercars).",
+        "status": "unknown",
+        "plannedFiles": [],
+        "matchedFiles": []
+      },
+      {
+        "id": "REQ-8",
+        "summary": "Create a new frontend page that provides a simple “Add Vehicle” form to insert vehicles into the catalog (Bike, Motorcycle, Car) by calling the backend create/add method.",
+        "status": "implemented",
+        "plannedFiles": [
+          "frontend/src/pages/AddVehiclePage.tsx",
+          "frontend/src/App.tsx",
+          "frontend/src/components/Header.tsx",
+          "frontend/src/components/Footer.tsx"
+        ],
+        "matchedFiles": [
+          "frontend/src/pages/AddVehiclePage.tsx",
+          "frontend/src/App.tsx",
+          "frontend/src/components/Header.tsx",
+          "frontend/src/components/Footer.tsx"
+        ]
+      },
+      {
+        "id": "REQ-9",
+        "summary": "Add an optional “Seed sample vehicles” action in the UI that inserts a small curated starter set across Bike, Motorcycle, and Car categories for quick testing.",
+        "status": "implemented",
+        "plannedFiles": [
+          "frontend/src/pages/AddVehiclePage.tsx"
+        ],
+        "matchedFiles": [
+          "frontend/src/pages/AddVehiclePage.tsx"
+        ]
+      }
+    ]
+  },
+  "changedFiles": [
+    "backend/main.mo",
+    "backend/migration.mo",
+    "build-request.json",
+    "build-template/README.md",
+    "feature_evidence.json",
+    "frontend-file-summaries.txt",
+    "frontend-implementation-plan.json",
+    "frontend/src/App.tsx",
+    "frontend/src/backend.d.ts",
+    "frontend/src/backend.ts",
+    "frontend/src/components/Footer.tsx",
+    "frontend/src/components/Header.tsx",
+    "frontend/src/declarations/backend.did.d.ts",
+    "frontend/src/declarations/backend.did.js",
+    "frontend/src/pages/AddVehiclePage.tsx",
+    "project_state.json",
+    "scratch/component-selection.json",
+    "spec.md",
+    "spec_vs_diff_report.json"
+  ]
+}

@@ -1,0 +1,62 @@
+{
+  "kind": "feature_evidence_report",
+  "features": [
+    {
+      "featureId": "feature-create-a-new-frontend-page-that-provides-a-simple-add-vehicle-form-to-insert-vehicles-into-the-catalog-bike-motorcycle-car-by-calling-the-backend-create-add-method",
+      "featureTitle": "Create a new frontend page that provides a simple “Add Vehicle” form to insert vehicles into the catalog (Bike, Motorcycle, Car) by calling the backend create/add method.",
+      "files": [
+        "frontend/src/App.tsx",
+        "frontend/src/components/Footer.tsx",
+        "frontend/src/components/Header.tsx",
+        "frontend/src/pages/AddVehiclePage.tsx"
+      ],
+      "components": [
+        "core-infrastructure@1.0.2",
+        "shadcn-ui@1.0.0",
+        "build-template-react@1.0.0",
+        "initial-app@1.0.0",
+        "github-export-icp-cli@1.0.0"
+      ],
+      "testIds": [
+        "REQ-8"
+      ],
+      "confidence": "high"
+    },
+    {
+      "featureId": "feature-add-an-optional-seed-sample-vehicles-action-in-the-ui-that-inserts-a-small-curated-starter-set-across-bike-motorcycle-and-car-categories-for-quick-testing",
+      "featureTitle": "Add an optional “Seed sample vehicles” action in the UI that inserts a small curated starter set across Bike, Motorcycle, and Car categories for quick testing.",
+      "files": [
+        "frontend/src/pages/AddVehiclePage.tsx"
+      ],
+      "components": [
+        "core-infrastructure@1.0.2",
+        "shadcn-ui@1.0.0",
+        "build-template-react@1.0.0",
+        "initial-app@1.0.0",
+        "github-export-icp-cli@1.0.0"
+      ],
+      "testIds": [
+        "REQ-9"
+      ],
+      "confidence": "high"
+    },
+    {
+      "featureId": "feature-ensure-react-query-vehicle-lists-refresh-appropriately-after-adding-or-seeding-vehicles-so-users-immediately-see-newly-inserted-items-on-home-category-pages",
+      "featureTitle": "Ensure React Query vehicle lists refresh appropriately after adding or seeding vehicles so users immediately see newly inserted items on Home/Category pages.",
+      "files": [
+        "frontend/src/pages/AddVehiclePage.tsx"
+      ],
+      "components": [
+        "core-infrastructure@1.0.2",
+        "shadcn-ui@1.0.0",
+        "build-template-react@1.0.0",
+        "initial-app@1.0.0",
+        "github-export-icp-cli@1.0.0"
+      ],
+      "testIds": [
+        "REQ-10"
+      ],
+      "confidence": "high"
+    }
+  ]
+}
